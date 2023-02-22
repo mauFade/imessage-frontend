@@ -1,6 +1,7 @@
-import { Button, Center, Image, Stack, Text } from "@chakra-ui/react";
+import { Button, Center, Image, Input, Stack, Text } from "@chakra-ui/react";
 import { Session } from "next-auth";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
+import { useState } from "react";
 
 interface IAuthProps {
   session: Session | null;
@@ -8,11 +9,31 @@ interface IAuthProps {
 }
 
 const Auth: React.FC<IAuthProps> = ({ reloadSession, session }) => {
+  const [username, setUsername] = useState<string>("");
+
+  const onSubmit = async () => {
+    try {
+      /**
+       * Create username graphql mutation
+       */
+    } catch (error) {
+      console.log("onSubmit error", error);
+    }
+  };
+
   return (
     <Center height="100vh">
-      <Stack>
+      <Stack spacing={8} align="center">
         {session ? (
-          <Text>Crie um usuário</Text>
+          <>
+            <Text>Crie um usuário</Text>
+            <Input
+              placeholder="Digite seu novo username"
+              value={username}
+              onChange={(event) => setUsername(event?.target.value)}
+            />
+            <Button onClick={onSubmit}>Salvar</Button>
+          </>
         ) : (
           <>
             <Text fontSize="3xl">Messenger</Text>
