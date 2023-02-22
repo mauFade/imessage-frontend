@@ -26,13 +26,15 @@ const Auth: React.FC<IAuthProps> = ({ reloadSession, session }) => {
       <Stack spacing={8} align="center">
         {session ? (
           <>
-            <Text>Crie um usuário</Text>
+            <Text fontSize="3xl">Crie um usuário</Text>
             <Input
-              placeholder="Digite seu novo username"
+              placeholder="Username"
               value={username}
               onChange={(event) => setUsername(event?.target.value)}
             />
-            <Button onClick={onSubmit}>Salvar</Button>
+            <Button width="100%" onClick={onSubmit}>
+              Salvar
+            </Button>
           </>
         ) : (
           <>
