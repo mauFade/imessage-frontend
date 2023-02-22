@@ -1,4 +1,4 @@
-import { Button, Center, Stack, Text } from "@chakra-ui/react";
+import { Button, Center, Image, Stack, Text } from "@chakra-ui/react";
 import { Session } from "next-auth";
 import { signIn } from "next-auth/react";
 
@@ -16,7 +16,12 @@ const Auth: React.FC<IAuthProps> = ({ reloadSession, session }) => {
         ) : (
           <>
             <Text fontSize="3xl">Messenger</Text>
-            <Button onClick={() => signIn("google")}>
+            <Button
+              onClick={() => signIn("google")}
+              leftIcon={
+                <Image src="/images/googlelogo.png" height="20px" alt="logo" />
+              }
+            >
               Continue com Google
             </Button>
           </>
