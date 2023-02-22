@@ -1,3 +1,10 @@
+import { signIn, useSession } from "next-auth/react";
+
 export default function Home() {
-  return <h1>Hello home page</h1>;
+  const { data } = useSession();
+  return (
+    <h1>
+      <button onClick={() => signIn("google")}>Sign in</button>
+    </h1>
+  );
 }
