@@ -10,12 +10,24 @@ interface IAuthProps {
   reloadSession: () => void;
 }
 
+interface CreateUsernameData {
+  createUsername: {
+    success: boolean;
+    error: string;
+  };
+}
+
+interface CreateUsernameVariables {
+  username: string;
+}
+
 const Auth: React.FC<IAuthProps> = ({ reloadSession, session }) => {
   const [username, setUsername] = useState<string>("");
 
-  const [createUsername, { data, loading, error }] = useMutation(
-    userOperations.Mutations.createUsername
-  );
+  const [createUsername, { data, loading, error }] = useMutation<
+    CreateUsernameData,
+    CreateUsernameVariables
+  >(userOperations.Mutations.createUsername);
 
   const onSubmit = async () => {
     try {
