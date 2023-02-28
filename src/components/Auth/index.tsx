@@ -12,14 +12,14 @@ interface IAuthProps {
 }
 
 const Auth: React.FC<IAuthProps> = ({ reloadSession, session }) => {
+  console.log(session);
+
   const [username, setUsername] = useState<string>("");
 
   const [createUsername, { data, loading, error }] = useMutation<
     CreateUsernameData,
     CreateUsernameVariables
   >(userOperations.Mutations.createUsername);
-
-  console.log("foi carai", { data, loading, error });
 
   const onSubmit = async () => {
     if (!username) return;
