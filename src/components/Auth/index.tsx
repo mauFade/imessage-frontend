@@ -1,4 +1,5 @@
 import { userOperations } from "@/graphql/operations/user";
+import { CreateUsernameData, CreateUsernameVariables } from "@/util/types";
 import { useMutation } from "@apollo/client";
 import { Button, Center, Image, Input, Stack, Text } from "@chakra-ui/react";
 import { Session } from "next-auth";
@@ -8,17 +9,6 @@ import { useState } from "react";
 interface IAuthProps {
   session: Session | null;
   reloadSession: () => void;
-}
-
-interface CreateUsernameData {
-  createUsername: {
-    success: boolean;
-    error: string;
-  };
-}
-
-interface CreateUsernameVariables {
-  username: string;
 }
 
 const Auth: React.FC<IAuthProps> = ({ reloadSession, session }) => {
